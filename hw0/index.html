@@ -5,21 +5,26 @@
 </head>
 <body>
 
-
+<!--This is the header div which contains the search bar and the button to add a new item to the list.-->
 <div id="myDIV" class="header">
+<!--    the heading is defined here -->
     <h2>My To Do List</h2>
+<!--    text input field to add a new TODO item -->
     <input type="text" id="myInput" placeholder="Title...">
+<!--    links to the newElement javascript function which adds a new list element to the unordered list.-->
     <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
+<!--This is the main div which contains the list of items. UL stands for unordered list-->
 <ul id="myUL">
     <li>Hit the gym</li>
-    <li class="checked">Pay bills</li>
-    <li>Meet George</li>
-    <li>Buy eggs</li>
+    <li class="checked">Groceries</li>
+    <li>Read CS279R papers</li>
+    <li>Do HW</li>
     <li>Read a book</li>
     <li>Organize office</li>
 </ul>
+<!--this line links the javascript file which provides function enabling interactivity-->
 <script src="interaction.js"></script>
 
 </body>
