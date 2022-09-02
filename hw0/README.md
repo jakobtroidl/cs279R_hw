@@ -1,0 +1,2 @@
+## HW0 TODO App using HTML, CSS, and Javacript
+You may work your way through a To-Do App Tutorial that uses only HTML, CSS, and JS, or create it from scratch. Add comments generously to demonstrate your understanding of what each critical function/statement does.
