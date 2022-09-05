@@ -5,10 +5,12 @@
             </div>
         {{/if}}
   <h3>Edit Task</h3>
+  form for editing a TODO element in the database
   <form action="/todo/edit" method="POST">
     <div class="form-group">
       <label for="title">Title</label>
       <input class="form-control" name="title" type="text" placeholder="Practice With Node JS" required>
+{{!--         input field is required    --}}
     </div>
     <div class="form-group">
       <label for="dueDate">Due Date</label>
