@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router();
 const passport = require('passport');
 
+// file handles routes for user inteactions
+
 const { registerUser, deleteUserAccount } = require('../controllers/user')
 const { notAuthenticated } = require('../controllers/auth')
 

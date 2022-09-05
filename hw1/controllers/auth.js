@@ -1,3 +1,7 @@
+/**
+ * Module handles user authentication
+ */
+
 module.exports = {
     isAuthenticated: function(req, res, next) {
       if (req.isAuthenticated()) {

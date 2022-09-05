@@ -1,26 +1,32 @@
 let { checkEmail, createUser, editTodo, createTodo, deleteTodo, deleteUser } = require('../mongodb/db')
 let { getHashedPassword } = require('./function')
 
+/**
+ * Register a user in the database
+ * @param req request object
+ * @param res response object
+ * @return {Promise<void>}
+ */
 async function registerUser(req, res) {
     try {
-        let {name, email, password, confirmPassword } = req.body
-        if(name == '' || email == '' || password == '' || confirmPassword == '') {
-            res.render('register', {
+        let {name, email, password, confirmPassword } = req.body // get user data from request body
+        if(name == '' || email == '' || password == '' || confirmPassword == '') { // check if all fields are filled
+            res.render('register', { // render register page with error message
                 message: 'Input Name, Email and Password!',
                 messageClass: 'alert-danger'
             });
             return
         }
-        if(password.length < 6 || confirmPassword < 6) {
+        if(password.length < 6 || confirmPassword < 6) { // if password length is less than 6 print error message
             res.render('register', {
                 message: 'Password must be at least 6 characters',
                 messageClass: 'alert-danger'
             });
             return
         }
-        if(password === confirmPassword) {
+        if(password === confirmPassword) { // password and confirm password must match
             let checking = await checkEmail(email)
-            if(checking) {
+            if(checking) { // check if email already exists in the database
                 res.render('register', {
                     message: 'User already registered.',
                     messageClass: 'alert-danger'
@@ -28,13 +34,13 @@ async function registerUser(req, res) {
                 return
             }
             let hashedPassword = getHashedPassword(password)
-            createUser(name, email, hashedPassword)
+            createUser(name, email, hashedPassword) // create user in the database
             res.render('login', {
                 message: 'Registration Complete. Please login to continue.',
                 messageClass: 'alert-success'
             });
             return
-        } else {
+        } else { // print message if passwords dont match
             res.render('register', {
                 message: 'Password does not match.',
                 messageClass: 'alert-danger'
@@ -46,6 +52,12 @@ async function registerUser(req, res) {
     }
 }
 
+/**
+ * add a TO_DO item to the database
+ * @param req request object, contains user id and todo data
+ * @param res
+ * @return {Promise<void>}
+ */
 async function addTodoUser(req, res) {
     try {
         let { title, dueDate } = req.body
@@ -65,13 +77,19 @@ async function addTodoUser(req, res) {
 
 async function deleteTodoUser(req, res) {
     try {
-        deleteTodo(req.user.id, req.body.id)
+        deleteTodo(req.user.id, req.body.id) // delete to_do for a given user
         res.redirect('/todo')
     } catch (error) {
         console.log(error)
     }
 }
 
+/**
+ * Edit TO_DO for a given user
+ * @param req
+ * @param res
+ * @return {Promise<void>}
+ */
 async function editTodoUser(req, res) {
     try {
         let { title, dueDate, id } = req.body
@@ -82,6 +100,12 @@ async function editTodoUser(req, res) {
     }
 }
 
+/**
+ * Delete user account from DB
+ * @param req
+ * @param res
+ * @return {Promise<void>}
+ */
 async function deleteUserAccount(req, res) {
     try {
         let id = req.user.id
