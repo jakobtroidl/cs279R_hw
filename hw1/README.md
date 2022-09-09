@@ -6,7 +6,7 @@ $ npm start
 Then open your browser to http://localhost:3002/
 ```
 
-The source code for this project was inspired by (this open source project)[https://github.com/fawwaz37/todo-express-mongodb].
+The source code for this project was inspired by this [open source project](https://github.com/fawwaz37/todo-express-mongodb).
 The rest of this README is the original README from the source project.
 
 
