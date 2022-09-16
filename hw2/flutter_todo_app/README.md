@@ -1,12 +1,3 @@
-
-
-
-
-
-# flutter_todo_app
-
-A new Flutter project.
-
 ## Running the app
 In this folder run the following commands:
 
