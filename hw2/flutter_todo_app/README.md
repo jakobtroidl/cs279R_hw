@@ -2,7 +2,7 @@
 In this folder run the following commands:
 
 ```bash
-flutter run
+flutter run -d chrome
 ```
 
 ## Other
